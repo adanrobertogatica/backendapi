@@ -31,7 +31,7 @@ If you want to load random data run
     
 ### Test
 Remember that for unit tests it is necessary to edit the phpunit.xml file
-    <server name="DB_CONNECTION" value="mysql"/>
-    <server name="DB_DATABASE" value="yourdatabasename"/>
+    server name="DB_CONNECTION" value="mysql"
+    server name="DB_DATABASE" value="yourdatabasename"
     
     php artisan test
