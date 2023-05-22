@@ -1,15 +1,37 @@
 ### Requirements
 - PHP = 8.1
 - Laravel >= 9.14
-- SQLite database
-
- This challenge does not require any additional library. DO NOT MODIFY the composer.json or composer.lock file as that may result in a test failure.
- The project already contain a sample SQLite database at /database/database.sqlite. Please don´t change the database structure by creating a seed or migration file because this may also result in a test failure.
-
+- MySQL database
+- 
 ### Installation
+Create .env file in project directory.
+Copy the content of .env.example to the new file.
 
-- Run composer install command: `composer install`
+Configure the following settings:
 
-- To serve the api run the command: `php artisan serve --port=3000`
+    DB_HOST= ip or domain of your MySQL database
+    DB_PORT= port of your MySQL
+    DB_DATABASE= name of your Database
+    DB_USERNAME= MySQL user
+    DB_PASSWORD= MySQL password (if not you have to leave blank)
+    
+    IMPORTANT!!!!!!!!
+    L5_SWAGGER_CONST_HOST= domain and port of your environment where your API will run locally (example http://adanexample.test:80)
 
-- To run the tests use the command: `php artisan test`
+Enter the project directory through the console and execute:
+    composer install
+
+    php artisan migrate
+
+API documentation: apidomain:port/api/documentation (L5_SWAGGER_CONST_HOST/api/documentation)
+In any case, if you enter the system you will see a link to the Swagger API documentation on the home page.
+
+If you want to load random data run
+    php artisan db:seed
+    
+### Test
+Remember that for unit tests it is necessary to edit the phpunit.xml file
+    <server name="DB_CONNECTION" value="mysql"/>
+    <server name="DB_DATABASE" value="yourdatabasename"/>
+    
+    php artisan test
