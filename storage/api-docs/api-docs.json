@@ -1,0 +1,627 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Products E-commerce",
+        "description": "URL List for MailUp Products API",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://adan.test"
+        }
+    ],
+    "paths": {
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "List all products",
+                "operationId": "1bfaa78d1c2c3848ab8165c5dadcad3e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "MacBook Pro 13.3 Retina"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "MacBook Description"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "apple.com/v/macbook-pro/ac/images/overview/hero_13__d1tfa5zby7e6_large_2x.jpg"
+                                                    },
+                                                    "brand": {
+                                                        "type": "string",
+                                                        "example": "Apple"
+                                                    },
+                                                    "price": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": "2000"
+                                                    },
+                                                    "price_sale": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": "1950"
+                                                    },
+                                                    "category": {
+                                                        "type": "string",
+                                                        "example": "Macbook Pro"
+                                                    },
+                                                    "stock": {
+                                                        "type": "integer",
+                                                        "example": "5"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Register a new product",
+                "operationId": "e8185e307706e2cd84bbcf5171e2f09d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "brand": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "price_sale": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "category": {
+                                                "type": "string"
+                                            },
+                                            "stock": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Desktop i7 DDR5",
+                                    "description": "Desktop gamer",
+                                    "image": "https://www.megatecnologia.com.ar/thumb/1679754167614_800x800.jpg",
+                                    "brand": "Intel",
+                                    "price": 15.52,
+                                    "price_sale": 11.52,
+                                    "category": "others",
+                                    "stock": 10
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Desktop i7 DDR5"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Desktop gamer"
+                                        },
+                                        "image": {
+                                            "type": "string",
+                                            "example": "https://www.megatecnologia.com.ar/thumb/1679754167614_800x800.jpg"
+                                        },
+                                        "brand": {
+                                            "type": "string",
+                                            "example": "Intel"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "example": 15.52
+                                        },
+                                        "price_sale": {
+                                            "type": "number",
+                                            "example": 11.52
+                                        },
+                                        "category": {
+                                            "type": "string",
+                                            "example": "others"
+                                        },
+                                        "stock": {
+                                            "type": "number",
+                                            "example": 10
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Errors object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Show product information",
+                "operationId": "7ab21ddb713501f3d4c2914892c02a21",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "MacBook Pro 13"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "image": {
+                                            "type": "string",
+                                            "example": "apple.com/v/macbook-pro/ac/images/overview/hero_13__d1tfa5zby7e6_large_2x.jpg"
+                                        },
+                                        "brand": {
+                                            "type": "string",
+                                            "example": "Apple"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "example": 2000
+                                        },
+                                        "price_sale": {
+                                            "type": "number",
+                                            "example": 1950
+                                        },
+                                        "category": {
+                                            "type": "string",
+                                            "example": "Macbook Pro"
+                                        },
+                                        "stock": {
+                                            "type": "number",
+                                            "example": 5
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Product] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update a product informatin",
+                "operationId": "6a7e11900844cd85cff66e662b82bd4c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "brand": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "price_sale": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "category": {
+                                                "type": "string"
+                                            },
+                                            "stock": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Desktop i7 DDR5",
+                                    "description": "Desktop gamer",
+                                    "image": "https://www.megatecnologia.com.ar/thumb/1679754167614_800x800.jpg",
+                                    "brand": "Intel",
+                                    "price": 17.52,
+                                    "price_sale": 11.52,
+                                    "category": "others",
+                                    "stock": 10
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Desktop i7 DDR5"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Desktop gamer"
+                                        },
+                                        "image": {
+                                            "type": "string",
+                                            "example": "https://www.megatecnologia.com.ar/thumb/1679754167614_800x800.jpg"
+                                        },
+                                        "brand": {
+                                            "type": "string",
+                                            "example": "Intel"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "example": 15.52
+                                        },
+                                        "price_sale": {
+                                            "type": "number",
+                                            "example": 11.52
+                                        },
+                                        "category": {
+                                            "type": "string",
+                                            "example": "others"
+                                        },
+                                        "stock": {
+                                            "type": "number",
+                                            "example": 10
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Errors object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Product] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete a product",
+                "operationId": "e80a6ca46716acee6b47ea1ac91663c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Product] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/paginate": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "List with pagination and filters",
+                "operationId": "74b652e5fb29cc3e9734c3bfd1cd484d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "start": {
+                                                "type": "string"
+                                            },
+                                            "length": {
+                                                "type": "string"
+                                            },
+                                            "search": {
+                                                "type": "string"
+                                            },
+                                            "orderdir": {
+                                                "type": "string"
+                                            },
+                                            "ordercolumn": {
+                                                "type": "number",
+                                                "format": "float"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "start": "0",
+                                    "length": "10",
+                                    "search": "MAC",
+                                    "orderdir": "DESC",
+                                    "ordercolumn": "name"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "MacBook Pro 13.3 Retina"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "MacBook Description"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "apple.com/v/macbook-pro/ac/images/overview/hero_13__d1tfa5zby7e6_large_2x.jpg"
+                                                    },
+                                                    "brand": {
+                                                        "type": "string",
+                                                        "example": "Apple"
+                                                    },
+                                                    "price": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": "2000"
+                                                    },
+                                                    "price_sale": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": "1950"
+                                                    },
+                                                    "category": {
+                                                        "type": "string",
+                                                        "example": "Macbook Pro"
+                                                    },
+                                                    "stock": {
+                                                        "type": "integer",
+                                                        "example": "5"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "recordsTotal": {
+                                            "type": "integer",
+                                            "example": "6"
+                                        },
+                                        "recordsFiltered": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The selected orderdir is invalid."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Errors object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
