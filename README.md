@@ -10,8 +10,8 @@ Copy the content of .env.example to the new file.
 Configure the following settings:
 
     DB_HOST= ip or domain of your MySQL database
-    DB_PORT= port of your MySQL
-    DB_DATABASE= name of your Database
+    DB_PORT= MySQL port
+    DB_DATABASE= Database name
     DB_USERNAME= MySQL user
     DB_PASSWORD= MySQL password (if not you have to leave blank)
     
